@@ -1,6 +1,6 @@
 import Layout from '@/layout'
-import User from './user'
-import Course from './course'
+import Table from './table'
+import Form from './form'
 
 export const constantRoutes = [
   {
@@ -26,8 +26,8 @@ export const constantRoutes = [
 ]
 
 export const asyncRoutes = [
-  User,
-  Course
+  Table,
+  Form
 ]
 
 export default [...constantRoutes, ...asyncRoutes]

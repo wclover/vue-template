@@ -1,10 +1,16 @@
 <template>
   <div class="content">
-    <div class="side-bar-out">
+    <div class="side-bar-out content-left">
       <side-bar />
     </div>
-    <div class="nav-bar-out">
-      <nav-bar />
+    <div class="content-right">
+      <div class="nav-bar-out">
+        <nav-bar />
+      </div>
+      <div class="nav-menu"></div>
+      <div class="content-main">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -27,15 +33,19 @@ export default {
   flex-direction: row;
   height: 100%;
 }
-/*.side-bar-out {*/
-/*  min-width: 45px;*/
-/*  height: 100%;*/
-/*  background-color: #f3cfff;*/
-/*}*/
-.nav-bar-out {
-  background-color: #e6e6e6;
-  padding: 10px 0 0 20px;
+.content-right {
   width: 100%;
+}
+.nav-bar-out {
+  padding: 10px 0 0 20px;
   height: 50px;
+}
+.nav-menu {
+  height: 50px;
+  background-color: #ffffff;
+}
+.content-main {
+  margin-top: 20px;
+  height: calc(100% - 130px)
 }
 </style>

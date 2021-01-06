@@ -12,5 +12,6 @@
 html, body, #app {
   height: 100%;
   width: 100%;
+  background-color: #e6e6e6;
 }
 </style>
