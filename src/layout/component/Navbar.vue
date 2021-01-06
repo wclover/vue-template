@@ -6,9 +6,22 @@
     <el-breadcrumb class="breadcrumb" separator="/">
       <el-breadcrumb-item v-for="menu in menus" :key="menu.name">{{menu.metaName}}</el-breadcrumb-item>
     </el-breadcrumb>
-    <div class="user">
-      <i class="el-icon-user user-icon"></i>
-      <span class="user-name">{{name}}</span>
+    <div class="search">
+      <el-input placeholder="搜索" class="search-input">
+        <i slot="prefix" class="el-icon-search search-incon"></i>
+      </el-input>
+    </div>
+    <div>
+      <el-popover
+        placement="bottom"
+        width="200"
+        trigger="click">
+        <div class="sign-out">退出</div>
+        <div slot="reference" class="user">
+          <i class="el-icon-user user-icon"></i>
+          <span class="user-name">{{name}}</span>
+        </div>
+      </el-popover>
     </div>
   </div>
 </template>
@@ -43,8 +56,10 @@ export default {
 </script>
 
 <style scoped>
+.nav-bar-in {
+  position: relative;
+}
 .collapse-icon {
-  float: left;
   background-color: cornflowerblue;
   width: 30px;
   height: 30px;
@@ -57,12 +72,29 @@ export default {
   cursor: pointer;
 }
 .breadcrumb {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 50px;
   line-height: 30px;
 }
+.search {
+  position: absolute;
+  right: 300px;
+  top: 0;
+}
+>>>.el-input__inner {
+  border-radius: 20px;
+  width: 200px;
+}
+.search-incon {
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+}
 .user {
-  float: right;
-  margin-right: 100px;
+  position: absolute;
+  top: 5px;
+  right: 150px;
   display: flex;
   flex-direction: row;
   cursor: pointer;
@@ -79,5 +111,9 @@ export default {
 .user-name {
   line-height: 30px;
   margin-left: 10px;
+}
+.sign-out {
+  font-size: 16px;
+  text-align: center;
 }
 </style>

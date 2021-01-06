@@ -3,14 +3,14 @@
     <div v-if="!hasChildren(item)">
       <router-link v-if="item.name" :to="{name: item.name}">
         <el-menu-item :index="item.name">
-          <i :class="item.meta.icon"></i>
+          <i :class="[item.meta.icon, 'side-icon']"></i>
           <span slot="title">{{item.meta.name}}</span>
         </el-menu-item>
       </router-link>
     </div>
     <el-submenu v-else :index="item.name">
       <template slot="title">
-        <i :class="[item.meta.icon, 'icon']"></i>
+        <i :class="[item.meta.icon, 'side-icon']"></i>
         <span slot="title">{{item.meta.name}}</span>
       </template>
       <menu-item v-for="subItem in item.children" :key="subItem.name" :item="subItem" />
@@ -42,5 +42,8 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
+}
+.side-icon {
+  margin-right: 30px !important;
 }
 </style>

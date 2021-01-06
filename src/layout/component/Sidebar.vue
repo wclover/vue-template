@@ -34,20 +34,20 @@ export default {
 </script>
 
 <style scoped>
-/*.scrollbar-wrapper {*/
-/*  overflow-x: hidden;*/
-/*}*/
-.scrollbar-wrapper {
-  overflow-x: hidden !important;
-}
 .side-bar-in {
   height: 100%;
   background-color: #f3cfff;
 }
 .min-width {
-  width: 46px;
+  width: 64px;
 }
 .max-width {
   width: 250px;
+}
+.el-scrollbar__thumb {
+  display: none;
+}
+.min-width >>> .el-submenu__icon-arrow {
+  display: none;
 }
 </style>
