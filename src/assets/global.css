@@ -1,3 +1,10 @@
 .content-body {
+    margin: 20px;
+    background-color: #ffffff;
+}
+.app-content {
     padding: 20px;
+}
+.form-input {
+    width: 250px !important;
 }
