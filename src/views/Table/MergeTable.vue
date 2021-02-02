@@ -31,7 +31,9 @@
         prop="province"
         label="Planifier"
       >
-        <el-button>按钮</el-button>
+        <template slot-scope="{row}">
+          <el-button @click="addVolume(row)"><i class="el-icon-right" /></el-button>
+        </template>
       </el-table-column>
       <el-table-column
         prop="deliveryConfigs.distributorName"
@@ -610,6 +612,7 @@ export default {
       const rowspan = []
       this.tableData.forEach(item => {
         for (let i = 0; i < item.deliveryConfigs.length; i++) {
+          item.deliveryConfigs[i].initValue = item.deliveryConfigs[i].volume || 0
           const newItem = {
             ...item,
             ...item.deliveryConfigs[i]
@@ -650,6 +653,23 @@ export default {
         }
       }
       console.log([...set])
+    },
+    addVolume (row) {
+      let volumeNum = row.deliveryConfigs.initValue
+      row.pallets.forEach(pallet => {
+        pallet.checked && (volumeNum += pallet.declaredBoxQuantity)
+      })
+      row.deliveryConfigs.volume = volumeNum
+      const index = _.findIndex(this.tableData, { province: row.province })
+      this.tableData.splice(index, 1, row)
+    },
+    cancelAdd (row) {
+      row.deliveryConfigs.volume = row.deliveryConfigs.initValue
+      row.pallets.map(pallet => {
+        pallet.checked = false
+      })
+      const index = _.findIndex(this.tableData, { province: row.province })
+      this.tableData.splice(index, 1, row)
     }
   }
 }

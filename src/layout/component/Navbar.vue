@@ -14,7 +14,7 @@
     <div>
       <el-popover
         placement="bottom"
-        width="200"
+        width="100"
         trigger="click">
         <div class="sign-out">退出</div>
         <div slot="reference" class="user">
@@ -44,6 +44,7 @@ export default {
           metaName: item.meta.name
         }
       })
+      console.log(RouteName)
       return RouteName
     }
   },

@@ -3,7 +3,7 @@
     <div class="side-bar-out content-left">
       <side-bar />
     </div>
-    <div class="content-right">
+    <div :class="{hasTagsView: needTagsView}" class="content-right">
       <div class="nav-bar-out">
         <nav-bar />
       </div>
@@ -18,23 +18,37 @@
 <script>
 import NavBar from '@/layout/component/Navbar'
 import SideBar from '@/layout/component/Sidebar'
+import { mapState } from 'vuex'
 export default {
   name: 'Layout',
   components: {
     NavBar,
     SideBar
+  },
+  computed: {
+    ...mapState({
+      needTagsView: state => state.collapse
+    })
   }
 }
 </script>
 
 <style scoped>
 .content {
-  display: flex;
-  flex-direction: row;
+  position: relative;
   height: 100%;
+  width: 100%;
 }
 .content-right {
-  width: 100%;
+  height: 100%;
+  margin-left: 64px;
+}
+.content-left {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
 }
 .nav-bar-out {
   padding: 10px 0 0 20px;
@@ -44,8 +58,8 @@ export default {
   height: 50px;
   background-color: #ffffff;
 }
-.content-main {
-  margin-top: 20px;
-  height: calc(100% - 130px)
+.hasTagsView {
+  margin-left: 250px;
+  width: calc(100% - 250px);
 }
 </style>
