@@ -1,25 +1,26 @@
 <template>
   <div class="nav-bar-in">
     <div class="collapse-icon" @click="switchCollapse">
-      <i :class="collapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
+      <i :class="collapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" />
     </div>
     <el-breadcrumb class="breadcrumb" separator="/">
-      <el-breadcrumb-item v-for="menu in menus" :key="menu.name">{{menu.metaName}}</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="menu in menus" :key="menu.name">{{ menu.metaName }}</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="search">
       <el-input placeholder="搜索" class="search-input">
-        <i slot="prefix" class="el-icon-search search-incon"></i>
+        <i slot="prefix" class="el-icon-search search-incon" />
       </el-input>
     </div>
     <div>
       <el-popover
         placement="bottom"
         width="100"
-        trigger="click">
+        trigger="click"
+      >
         <div class="sign-out">退出</div>
         <div slot="reference" class="user">
-          <i class="el-icon-user user-icon"></i>
-          <span class="user-name">{{name}}</span>
+          <i class="el-icon-user user-icon" />
+          <span class="user-name">{{ name }}</span>
         </div>
       </el-popover>
     </div>
@@ -27,33 +28,33 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 export default {
   name: 'Navbar',
-  data () {
+  data() {
     return {
       name: 'xxx'
-    }
+    };
   },
   computed: {
     ...mapGetters(['collapse']),
-    menus () {
+    menus() {
       const RouteName = this.$route.matched.map(item => {
         return {
           name: item.name,
           metaName: item.meta.name
-        }
-      })
-      console.log(RouteName)
-      return RouteName
+        };
+      });
+      console.log(RouteName);
+      return RouteName;
     }
   },
   methods: {
-    switchCollapse () {
-      this.$store.dispatch('switchCollapse')
+    switchCollapse() {
+      this.$store.dispatch('switchCollapse');
     }
   }
-}
+};
 </script>
 
 <style scoped>

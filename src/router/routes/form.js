@@ -1,4 +1,4 @@
-import Layout from '@/layout'
+import Layout from '@/layout';
 
 export default {
   path: '/form',
@@ -13,4 +13,4 @@ export default {
       meta: { name: '基础表单', icon: 'el-icon-delete' }
     }
   ]
-}
+};

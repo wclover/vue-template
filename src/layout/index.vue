@@ -7,7 +7,7 @@
       <div class="nav-bar-out">
         <nav-bar />
       </div>
-      <div class="nav-menu"></div>
+      <div class="nav-menu" />
       <div class="content-main">
         <router-view />
       </div>
@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import NavBar from '@/layout/component/Navbar'
-import SideBar from '@/layout/component/Sidebar'
-import { mapState } from 'vuex'
+import NavBar from '@/layout/component/Navbar';
+import SideBar from '@/layout/component/Sidebar';
+import { mapState } from 'vuex';
 export default {
   name: 'Layout',
   components: {
@@ -30,7 +30,7 @@ export default {
       needTagsView: state => state.collapse
     })
   }
-}
+};
 </script>
 
 <style scoped>

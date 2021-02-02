@@ -1,6 +1,6 @@
-import Layout from '@/layout'
-import Table from './table'
-import Form from './form'
+import Layout from '@/layout';
+import Table from './table';
+import Form from './form';
 
 export const constantRoutes = [
   {
@@ -23,11 +23,11 @@ export const constantRoutes = [
       }
     ]
   }
-]
+];
 
 export const asyncRoutes = [
   Table,
   Form
-]
+];
 
-export default [...constantRoutes, ...asyncRoutes]
+export default [...constantRoutes, ...asyncRoutes];

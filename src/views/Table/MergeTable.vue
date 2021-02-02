@@ -60,14 +60,14 @@
 </template>
 
 <script>
-import PalletBoard from '../../components/PalletBoard'
-import _ from 'lodash'
+import PalletBoard from '../../components/PalletBoard';
+import _ from 'lodash';
 export default {
   name: 'MergeTable',
   components: {
     PalletBoard
   },
-  data () {
+  data() {
     return {
       tableData: [
         {
@@ -591,88 +591,88 @@ export default {
         }
       ],
       rowspan: []
-    }
+    };
   },
-  mounted () {
-    this.convertTableData()
+  mounted() {
+    this.convertTableData();
   },
   methods: {
-    objectSpanMethod ({ rowIndex, columnIndex }) {
+    objectSpanMethod({ rowIndex, columnIndex }) {
       if ([0, 1, 2].includes(columnIndex)) {
-        const row = this.rowspan[rowIndex]
-        const col = row > 0 ? 1 : 0
+        const row = this.rowspan[rowIndex];
+        const col = row > 0 ? 1 : 0;
         return {
           rowspan: row,
           colspan: col
-        }
+        };
       }
     },
-    convertTableData () {
-      const arr = []
-      const rowspan = []
+    convertTableData() {
+      const arr = [];
+      const rowspan = [];
       this.tableData.forEach(item => {
         for (let i = 0; i < item.deliveryConfigs.length; i++) {
-          item.deliveryConfigs[i].initValue = item.deliveryConfigs[i].volume || 0
+          item.deliveryConfigs[i].initValue = item.deliveryConfigs[i].volume || 0;
           const newItem = {
             ...item,
             ...item.deliveryConfigs[i]
-          }
-          newItem.combineNum = item.deliveryConfigs.length
-          newItem.deliveryConfigs = item.deliveryConfigs[i]
-          arr.push(newItem)
+          };
+          newItem.combineNum = item.deliveryConfigs.length;
+          newItem.deliveryConfigs = item.deliveryConfigs[i];
+          arr.push(newItem);
           if (i === 0) {
-            rowspan.push(item.deliveryConfigs.length)
+            rowspan.push(item.deliveryConfigs.length);
           } else {
-            rowspan.push(0)
+            rowspan.push(0);
           }
         }
-      })
-      this.tableData = arr
+      });
+      this.tableData = arr;
       this.tableData = this.tableData.map(item => {
-        item.declaredQuantity = _.sumBy(item.pallets, i => { return i.declaredQuantity })
-        item.declaredBoxQuantity = _.sumBy(item.pallets, i => { return i.declaredBoxQuantity })
+        item.declaredQuantity = _.sumBy(item.pallets, i => { return i.declaredQuantity; });
+        item.declaredBoxQuantity = _.sumBy(item.pallets, i => { return i.declaredBoxQuantity; });
         item.pallets = item.pallets.map(pallet => {
-          pallet.checked = false
-          return pallet
-        })
-        return item
-      })
-      console.log(this.tableData)
-      this.rowspan = rowspan
+          pallet.checked = false;
+          return pallet;
+        });
+        return item;
+      });
+      console.log(this.tableData);
+      this.rowspan = rowspan;
     },
-    changeStatus () {
-      this.getCheckedId()
+    changeStatus() {
+      this.getCheckedId();
     },
-    getCheckedId () {
-      const set = new Set()
+    getCheckedId() {
+      const set = new Set();
       for (const i of this.tableData) {
         for (const j of i.pallets) {
           if (j.checked) {
-            set.add(j.id)
+            set.add(j.id);
           }
         }
       }
-      console.log([...set])
+      console.log([...set]);
     },
-    addVolume (row) {
-      let volumeNum = row.deliveryConfigs.initValue
+    addVolume(row) {
+      let volumeNum = row.deliveryConfigs.initValue;
       row.pallets.forEach(pallet => {
-        pallet.checked && (volumeNum += pallet.declaredBoxQuantity)
-      })
-      row.deliveryConfigs.volume = volumeNum
-      const index = _.findIndex(this.tableData, { province: row.province })
-      this.tableData.splice(index, 1, row)
+        pallet.checked && (volumeNum += pallet.declaredBoxQuantity);
+      });
+      row.deliveryConfigs.volume = volumeNum;
+      const index = _.findIndex(this.tableData, { province: row.province });
+      this.tableData.splice(index, 1, row);
     },
-    cancelAdd (row) {
-      row.deliveryConfigs.volume = row.deliveryConfigs.initValue
+    cancelAdd(row) {
+      row.deliveryConfigs.volume = row.deliveryConfigs.initValue;
       row.pallets.map(pallet => {
-        pallet.checked = false
-      })
-      const index = _.findIndex(this.tableData, { province: row.province })
-      this.tableData.splice(index, 1, row)
+        pallet.checked = false;
+      });
+      const index = _.findIndex(this.tableData, { province: row.province });
+      this.tableData.splice(index, 1, row);
     }
   }
-}
+};
 </script>
 
 <style scoped>

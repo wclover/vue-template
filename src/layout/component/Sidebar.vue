@@ -8,7 +8,8 @@
         text-color="#c333ce"
         :collapse="!collapse"
         :collapse-transition="false"
-        mode="vertical">
+        mode="vertical"
+      >
         <menu-item v-for="menu in routes" :key="menu.name" :item="menu" />
       </el-menu>
     </el-scrollbar>
@@ -16,9 +17,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { asyncRoutes } from '@/router/routes'
-import menuItem from '@/layout/component/side/menuItem'
+import { mapGetters } from 'vuex';
+import { asyncRoutes } from '@/router/routes';
+import menuItem from '@/layout/component/side/menuItem';
 export default {
   name: 'Sidebar',
   components: {
@@ -26,11 +27,11 @@ export default {
   },
   computed: {
     ...mapGetters(['collapse']),
-    routes () {
-      return asyncRoutes
+    routes() {
+      return asyncRoutes;
     }
   }
-}
+};
 </script>
 
 <style scoped>

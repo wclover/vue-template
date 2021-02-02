@@ -22,18 +22,18 @@ export default {
       default: () => false
     }
   },
-  data () {
+  data() {
     return {
       checkedIn: this.checked
-    }
+    };
   },
   methods: {
-    changeStatus () {
-      this.$emit('update:checked', this.checkedIn)
-      this.$emit('changeStatus')
+    changeStatus() {
+      this.$emit('update:checked', this.checkedIn);
+      this.$emit('changeStatus');
     }
   }
-}
+};
 </script>
 
 <style scoped>

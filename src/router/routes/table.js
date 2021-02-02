@@ -1,4 +1,4 @@
-import Layout from '@/layout'
+import Layout from '@/layout';
 
 export default {
   path: '/table',
@@ -19,4 +19,4 @@ export default {
       meta: { name: '合并表格', icon: 'el-icon-star-off' }
     }
   ]
-}
+};
