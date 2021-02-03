@@ -1,7 +1,5 @@
 // Vue.config.js 配置选项
-
 module.exports = {
-
   // 选项
 
   //  基本路径
